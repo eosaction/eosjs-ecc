@@ -113,16 +113,16 @@ PublicKey.isValid = function(pubkey, pubkey_prefix = 'EOS') {
     }
 }
 
-PublicKey.fromBinary = function(bin) {
-    return PublicKey.fromBuffer(new Buffer(bin, 'binary'));
+PublicKey.fromBinary = function(bin, pubkey_prefix = 'EOS') {
+    return PublicKey.fromBuffer(new Buffer(bin, 'binary'), pubkey_prefix);
 }
 
-PublicKey.fromBuffer = function(buffer) {
-    return PublicKey(ecurve.Point.decodeFrom(secp256k1, buffer));
+PublicKey.fromBuffer = function(buffer, pubkey_prefix = 'EOS') {
+    return PublicKey(ecurve.Point.decodeFrom(secp256k1, buffer), pubkey_prefix);
 }
 
-PublicKey.fromPoint = function(point) {
-    return PublicKey(point);
+PublicKey.fromPoint = function(point, pubkey_prefix = 'EOS') {
+    return PublicKey(point, pubkey_prefix);
 }
 
 /**

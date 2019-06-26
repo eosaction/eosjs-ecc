@@ -59,14 +59,14 @@ function PrivateKey(d) {
     /**
         @return {Point}
     */
-    function toPublic() {
+    function toPublic(pubkey_prefix = 'EOS') {
         if (public_key) {
             // cache
             // S L O W in the browser
             return public_key
         }
         const Q = secp256k1.G.multiply(d);
-        return public_key = PublicKey.fromPoint(Q);
+        return public_key = PublicKey.fromPoint(Q, pubkey_prefix);
     }
 
     function toBuffer() {
